@@ -1,3 +1,4 @@
+import 'package:bank_space/app/modules/login/widgets/login_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,7 @@ class HomePage extends StatelessWidget {
                     fixedSize: Size(250, 70),
                     elevation: 5),
                 onPressed: () {
-                  Get.toNamed("/login");
+                  Get.to(LoginPageState());
                 },
               ),
             ),
