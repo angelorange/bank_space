@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bank_space/app/modules/home/widgets/home_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage()
     );
   }
 }
