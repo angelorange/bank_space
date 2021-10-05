@@ -1,4 +1,4 @@
-import 'package:bank_space/app/modules/login/widgets/login_page.dart';
+import 'package:bank_space/app/modules/login/widgets/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_space/app/modules/home/widgets/home_page.dart';
 import 'package:get/get.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage()
+      home: LoginPageState()
     );
   }
 }
