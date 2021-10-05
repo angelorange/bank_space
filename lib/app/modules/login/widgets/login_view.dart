@@ -164,12 +164,9 @@ class LoginPageState extends GetView<LoginController> {
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline),
                   ),
-                  onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => RegisterPage()),
-                    // );
-                  },
+                onPressed: () {
+                  Get.toNamed("/sign_up");
+                },
                 ),
               )
             ],
