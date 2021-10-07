@@ -2,6 +2,7 @@ import 'package:bank_space/app/modules/sign_up/controller/sign_up_controller.dar
 import 'package:flutter/material.dart';
 import 'package:bank_space/app/modules/login/widgets/login_view.dart';
 import 'package:bank_space/app/modules/sign_up/bindings/sign_up_binding.dart';
+import 'package:bank_space/app/modules/login/bindings/login_binding.dart';
 import 'package:get/get.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -184,14 +185,10 @@ class SignUpView extends GetView<SignUpController> {
                               width: 1.0),
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20.0)),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPageState()),
-                          );
-                        },
+                      child: ElevatedButton(
+                        onPressed: () { 
+                          Get.to(LoginPageState());
+                         },
                         child: Center(
                           child: Text('Go Back',
                               style: TextStyle(
