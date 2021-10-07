@@ -1,9 +1,11 @@
+import 'package:bank_space/app/modules/sign_up/widgets/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_space/app/modules/home/widgets/home_page.dart';
 import 'package:bank_space/app/modules/login/controller/login_controller.dart';
 import 'package:get/get.dart';
 
 class LoginPageState extends GetView<LoginController> {
+  final LoginController _loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -165,7 +167,7 @@ class LoginPageState extends GetView<LoginController> {
                         decoration: TextDecoration.underline),
                   ),
                 onPressed: () {
-                  Get.toNamed("/sign_up");
+                  Get.to(SignUpView());
                 },
                 ),
               )
