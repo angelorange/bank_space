@@ -23,7 +23,7 @@ class SignUpView extends GetView<SignUpController> {
                 Container(
                   padding: EdgeInsets.fromLTRB(15.0, 160.0, 0.0, 0.0),
                   child: Text(
-                    'Register',
+                    'Sign Up',
                     style: TextStyle(
                         fontSize: 80.0,
                         fontWeight: FontWeight.bold,
@@ -62,6 +62,26 @@ class SignUpView extends GetView<SignUpController> {
                     },
                     validator: (value) {
                       return controller.validateUsername(value!);
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Birthday',
+                      labelStyle: TextStyle(
+                          fontFamily: 'Righteous',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                    ),
+                    keyboardType: TextInputType.name,
+                    controller: controller.birthdayController,
+                    onSaved: (value) {
+                      controller.birthday = value!;
+                    },
+                    validator: (value) {
+                      return controller.validateBirthday(value!);
                     },
                   ),
                   SizedBox(height: 10.0),
@@ -149,9 +169,8 @@ class SignUpView extends GetView<SignUpController> {
                   Container(
                       height: 40.0,
                       child: Material(
+                        key: _formKey,
                         borderRadius: BorderRadius.circular(20.0),
-                        shadowColor: Colors.greenAccent,
-                        color: Colors.green,
                         elevation: 7.0,
                         child: ElevatedButton(
                           onPressed: () {
@@ -159,9 +178,9 @@ class SignUpView extends GetView<SignUpController> {
                               print('succesfull');
                             }
                           },
-                          child: ElevatedButton(
-                            onPressed: () {
-                              controller.login();
+                          child: InkWell(
+                            onTap: () {
+                              controller.checkLogin();
                             },
                             child: Text(
                               'Submit',
@@ -185,15 +204,17 @@ class SignUpView extends GetView<SignUpController> {
                               width: 1.0),
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20.0)),
-                      child: ElevatedButton(
-                        onPressed: () { 
+                      child: InkWell(
+                        onTap: () {
                           Get.to(LoginPageState());
-                         },
+                        },
                         child: Center(
-                          child: Text('Go Back',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Righteous')),
+                          child: Text(
+                            'Go Back',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Righteous'),
+                          ),
                         ),
                       ),
                     ),

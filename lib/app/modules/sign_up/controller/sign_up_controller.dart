@@ -3,17 +3,18 @@ import 'package:get/get.dart';
 
 class SignUpController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   late TextEditingController emailController,
-      passwordController,
-      cpfController,
-      birthdayController,
-      usernameController = TextEditingController();
-  var username = '';
-  var cpf = '';
-  var email = '';
-  var password = '';
-  var birthday = '';
+    passwordController,
+    cpfController,
+    birthdayController,
+    usernameController = TextEditingController();
+    var username = '';
+    var cpf = '';
+    var email = '';
+    var password = '';
+    var birthday = '';
   @override
   void onInit() {
     super.onInit();
@@ -84,6 +85,22 @@ class SignUpController extends GetxController {
     }
   }
 
+    String? validateBirthday(String value) {
+    String pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regex = new RegExp(pattern);
+    print(value);
+    if (value.isEmpty) {
+      return 'Please enter your birthday';
+    } else {
+      if (!regex.hasMatch(value))
+        return 'Enter valid birthday';
+      else
+        return null;
+    }
+  }
+  
+
   void login() {
     if (loginFormKey.currentState!.validate()) {
       checkUser(emailController.text, passwordController.text).then((auth) {
@@ -95,5 +112,13 @@ class SignUpController extends GetxController {
         passwordController.clear();
       });
     }
+  }
+
+  void checkLogin() {
+    final isValid = loginFormKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    loginFormKey.currentState!.save();
   }
 }
