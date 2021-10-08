@@ -159,7 +159,7 @@ class LoginPageState extends GetView<LoginController> {
               Container(
                 child: ElevatedButton(
                   child: Text(
-                    'Register aqui',
+                    'Register here',
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Righteous',
