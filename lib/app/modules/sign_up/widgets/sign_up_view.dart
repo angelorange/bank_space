@@ -1,8 +1,7 @@
+import 'package:bank_space/app/modules/home/widgets/home_page.dart';
 import 'package:bank_space/app/modules/sign_up/controller/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_space/app/modules/login/widgets/login_view.dart';
-import 'package:bank_space/app/modules/sign_up/bindings/sign_up_binding.dart';
-import 'package:bank_space/app/modules/login/bindings/login_binding.dart';
 import 'package:get/get.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -180,7 +179,7 @@ class SignUpView extends GetView<SignUpController> {
                           },
                           child: InkWell(
                             onTap: () {
-                              controller.checkLogin();
+                              Get.to(HomePage()); //Pra onde o botão submit tem que autenticar
                             },
                             child: Text(
                               'Submit',
