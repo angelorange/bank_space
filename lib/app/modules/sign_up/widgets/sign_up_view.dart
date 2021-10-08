@@ -1,7 +1,9 @@
 import 'package:bank_space/app/modules/home/widgets/home_page.dart';
+import 'package:bank_space/app/modules/personal_page/widgets/personal_wallet.dart';
 import 'package:bank_space/app/modules/sign_up/controller/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_space/app/modules/login/widgets/login_view.dart';
+import 'package:bank_space/app/modules/personal_page/widgets/profile.dart';
 import 'package:get/get.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -173,13 +175,14 @@ class SignUpView extends GetView<SignUpController> {
                         elevation: 7.0,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              print('succesfull');
-                            }
+                            // if (_formKey.currentState!.validate()) {
+                            //   print('succesfull');
+                            // }
                           },
                           child: InkWell(
                             onTap: () {
-                              Get.to(HomePage()); //Pra onde o botão submit tem que autenticar
+                              Get.to(
+                                  HomeWithSidebar()); //Pra onde o botão submit tem que autenticar
                             },
                             child: Text(
                               'Submit',
