@@ -1,7 +1,6 @@
 import 'package:bank_space/app/modules/home/widgets/home_page.dart';
 import 'package:bank_space/app/modules/sign_up/bindings/sign_up_binding.dart';
 import 'package:flutter/material.dart';
-import 'package:bank_space/app/modules/sign_up/widgets/sign_up_view.dart';
 import 'package:get/get.dart';
 
 void main() {
