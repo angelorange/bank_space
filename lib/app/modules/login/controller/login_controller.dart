@@ -48,15 +48,6 @@ class LoginController extends GetxController {
   }
 
   void login() {
-    if (loginFormKey.currentState!.validate()) {
-      checkUser(emailController.text, passwordController.text).then((auth) {
-        if (auth) {
-          Get.snackbar('Login', 'Login successfully');
-        } else {
-          Get.snackbar('Login', 'Invalid email or password');
-        }
-        passwordController.clear();
-      });
-    }
+    
   }
 }

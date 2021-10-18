@@ -96,7 +96,7 @@ class LoginPageState extends GetView<LoginController> {
                           elevation: 7.0,
                           child: ElevatedButton(
                             onPressed: () {
-                              controller.login;
+                              controller.login; // Login Button
                             },
                             child: Center(
                               child: Text(

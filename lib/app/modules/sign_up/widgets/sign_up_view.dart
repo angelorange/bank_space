@@ -175,22 +175,15 @@ class SignUpView extends GetView<SignUpController> {
                         elevation: 7.0,
                         child: ElevatedButton(
                           onPressed: () {
-                            // if (_formKey.currentState!.validate()) {
-                            //   print('succesfull');
-                            // }
+                            // Submit Button 
                           },
-                          child: InkWell(
-                            onTap: () {
-                              Get.to(
-                                  HomeWithSidebar()); //Pra onde o botão submit tem que autenticar
-                            },
-                            child: Text(
-                              'Submit',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Righteous'),
-                            ),
+                          
+                          child: Text(
+                            'Submit',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Righteous'),
                           ),
                         ),
                       )),

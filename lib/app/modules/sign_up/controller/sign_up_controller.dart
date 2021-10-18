@@ -55,20 +55,6 @@ class SignUpController extends GetxController {
     }
   }
 
-  // String? validatePassword(String value) {
-  //   if (value.length < 6) {
-  //     return "Password must be of 6 characters";
-  //   }
-  //   return null;
-  // }
-
-  // Api Simulation
-  Future<bool> checkUser(String user, String password) {
-    if (user == 'foo@foo.com' && password == '123') {
-      return Future.value(true);
-    }
-    return Future.value(false);
-  }
 
   String? validatePassword(String value) {
     String pattern =
@@ -101,24 +87,8 @@ class SignUpController extends GetxController {
   }
   
 
-  void login() {
-    if (loginFormKey.currentState!.validate()) {
-      checkUser(emailController.text, passwordController.text).then((auth) {
-        if (auth) {
-          Get.snackbar('Login', 'Login successfully');
-        } else {
-          Get.snackbar('Login', 'Invalid email or password');
-        }
-        passwordController.clear();
-      });
-    }
+  void signUp() {
+   
   }
 
-  void checkLogin() {
-    final isValid = loginFormKey.currentState!.validate();
-    if (!isValid) {
-      return;
-    }
-    loginFormKey.currentState!.save();
-  }
 }
