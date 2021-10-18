@@ -1,6 +1,6 @@
+import 'package:bankinspace/app/modules/sign_up/bindings/sign_up_binding.dart';
 import 'package:bankinspace/app/modules/sign_up/widgets/sign_up_view.dart';
 import 'package:flutter/material.dart';
-import 'package:bankinspace/app/modules/home/widgets/home_page.dart';
 import 'package:bankinspace/app/modules/login/controller/login_controller.dart';
 import 'package:get/get.dart';
 
@@ -40,16 +40,22 @@ class LoginPageState extends GetView<LoginController> {
           ),
           Form(
             child: Container(
+                decoration: BoxDecoration(
+
+                color: Colors.black,
+                ),
                 padding: EdgeInsets.only(top: 40.0, left: 20.0, right: 30.0),
                 child: Column(
                   children: <Widget>[
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'EMAIL',
+                        labelText: 'Email',
                         labelStyle: TextStyle(
                             fontFamily: 'Righteous',
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
                         ),
@@ -66,11 +72,13 @@ class LoginPageState extends GetView<LoginController> {
                     SizedBox(height: 10.0),
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'PASSWORD ',
+                        labelText: 'Senha ',
                         labelStyle: TextStyle(
                             fontFamily: 'Righteous',
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
                         ),
@@ -91,12 +99,17 @@ class LoginPageState extends GetView<LoginController> {
                       child: Form(
                         child: Material(
                           borderRadius: BorderRadius.circular(20.0),
-                          shadowColor: Colors.greenAccent,
+                          shadowColor: Colors.purple,
                           color: Colors.green,
                           elevation: 7.0,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.purple,
+                              onPrimary: Colors.white,
+                              fixedSize: Size(250, 70),
+                              elevation: 5),
                             onPressed: () {
-                              controller.login; // Login Button
+                              controller.login();
                             },
                             child: Center(
                               child: Text(
@@ -113,66 +126,49 @@ class LoginPageState extends GetView<LoginController> {
                     ),
                     SizedBox(height: 20.0),
                     Container(
-                      height: 40.0,
-                      color: Colors.transparent,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Colors.black,
-                                style: BorderStyle.solid,
-                                width: 1.0),
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Container(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()),
-                              );
-                            },
-                            child: Center(
-                              child: Text('Go Back',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Righteous')),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-          ),
-          SizedBox(height: 35.0),
+          child:
+          SizedBox(height: 30)),
+          Container(
+          child:
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Are you new?',
+                'Não possui uma conta?',
                 style: TextStyle(
                   fontFamily: 'Righteous',
+                  color: Colors.white
                 ),
               ),
+              
               SizedBox(width: 5.0),
               Container(
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.purple,
+                    onPrimary: Colors.white,
+                    fixedSize: Size(150, 28),
+                    elevation: 5),
                   child: Text(
-                    'Register here',
+                    'Cadastre-se',
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Righteous',
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline),
+                  
                   ),
                 onPressed: () {
-                  Get.to(SignUpView());
+                  Get.to(() => SignUpView(), binding: SignUpBinding());
                 },
                 ),
               )
             ],
           )
-        ]));
+        )
+        ],
+        )),
+        ),
+      ]));
   }
 }
