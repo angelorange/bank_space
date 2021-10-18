@@ -9,7 +9,7 @@ class User {
     User({
         required this.email,
         required this.username,
-        required this.password,
+        required this.fullname,
         required this.cpf,
         required this.birthday,
         required this.id,
@@ -18,11 +18,10 @@ class User {
 
     String email;
     String username;
-    String password;
-    int cpf;
+    String fullname;
+    String cpf;
     String birthday;
-    String id;
+    int id;
     String token;
 
-    
 }
