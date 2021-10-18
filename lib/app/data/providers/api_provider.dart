@@ -45,4 +45,5 @@ class AuthAPI extends BaseApi {
         await http.post(Uri.parse(super.authPath), headers: super.headers, body: body);
 
     return response.body;
-  }
+    }
+}
