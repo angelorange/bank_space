@@ -1,30 +1,49 @@
+import 'package:bankinspace/app/data/models/wallet_model.dart';
 import 'package:flutter/material.dart';
 
 class PersonalWallet extends StatelessWidget {
+
+  final Wallet wallet;
+  const PersonalWallet(this.wallet);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: personalWallet(),
+      home: personalWallet(this.wallet),
     );
   }
 }
 
 class personalWallet extends StatefulWidget {
+  final Wallet wallet;
+  const personalWallet(this.wallet);
+  
   @override
-  _personalWalletState createState() => _personalWalletState();
+  _personalWalletState createState() => _personalWalletState(this.wallet);
 }
 
 class _personalWalletState extends State<personalWallet> {
+
+
+  final Wallet wallet;
+  _personalWalletState(this.wallet);
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Container(
         padding: EdgeInsets.all(30),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/bg3.jpg"), fit: BoxFit.cover),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -44,7 +63,7 @@ class _personalWalletState extends State<personalWallet> {
                     Text(
                       "eWallet",
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontFamily: 'ubuntu',
                           fontSize: 25),
                     )
@@ -56,12 +75,13 @@ class _personalWalletState extends State<personalWallet> {
               height: 20,
             ),
             Text(
-              "Account Overview",
+              "Meu Saldo",
               style: TextStyle(
                   fontSize: 21,
                   fontWeight: FontWeight.w800,
-                  fontFamily: 'avenir'),
+                  fontFamily: 'avenir',color: Colors.white),
             ),
+            
             SizedBox(
               height: 10,
             ),
@@ -69,7 +89,8 @@ class _personalWalletState extends State<personalWallet> {
               padding: EdgeInsets.all(30),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Color(0xfff1f3f6),
+                color: Colors.black,
+                border: Border.all(color: Color(0xffadff2f))
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,36 +100,35 @@ class _personalWalletState extends State<personalWallet> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "20,600",
+                        (wallet.amount * 2).toString(),
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w700),
+                            fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white),
                       ),
                       SizedBox(
                         height: 5,
                       ),
                       Text(
-                        "Current Balance",
+                        "Saldo em R\$",
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
                       ),
                       SizedBox(height: 20,),
                                             Text(
-                        "100,00",
+                        wallet.amount.toString(),
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w700),
+                            fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white),
                       ),
                       Text(
-                        " OC\$ Balance",
+                        "Saldo em OC\$",
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
                       ),
                     ],
                   ),
                   Container(
                     height: 60,
                     width: 60,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Color(0xffffac30)),
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xffadff2f)),
                     child: Icon(
                       Icons.add,
                       size: 30,
@@ -124,19 +144,15 @@ class _personalWalletState extends State<personalWallet> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Send Money",
+                  "Ultimas Transferências",
                   style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.w800,
-                      fontFamily: 'avenir'),
+                      fontFamily: 'avenir', color: Colors.white),
                 ),
                 Container(
                   height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/scanqr.png'))),
-                )
+                  width: 60,)
               ],
             ),
             SingleChildScrollView(
@@ -149,7 +165,9 @@ class _personalWalletState extends State<personalWallet> {
                     margin: EdgeInsets.only(right: 20),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xffffac30),
+                      color: Color(0xffadff2f),
+                     
+              
                     ),
                     child: Icon(
                       Icons.add,
@@ -165,99 +183,146 @@ class _personalWalletState extends State<personalWallet> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Services',
-                  style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'avenir'),
-                ),
-                Container(
-                  height: 60,
-                  width: 60,
-                  child: Icon(Icons.dialpad),
-                )
-              ],
-            ),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 4,
-                childAspectRatio: 0.7,
-                children: [
-                  serviceWidget("sendMoney", "Send\nMoney"),
-                  serviceWidget("receiveMoney", "Receive\nMoney"),
-                  serviceWidget("more", "More\n"),
-                ],
-              ),
-            )
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 Text(
+                   'Serviços',
+                   style: TextStyle(
+                       fontSize: 21,
+                       fontWeight: FontWeight.w800,
+                       fontFamily: 'avenir', color: Colors.white,)
+                 ),
+                 
+                 Container(
+                   height: 30,
+                   width: 30,
+                   child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xffadff2f)),
+                    child: TextButton(
+                      child: Icon(
+                      Icons.add,
+                      size: 15,
+                      color: Colors.black
+                      ),
+                    onPressed: 
+                      () => showDialog<String>(
+                        context: context,
+                        builder: 
+                          (BuildContext context) => AlertDialog(
+
+                            backgroundColor: Colors.black ,
+                            title: const Text('Serviços'),
+                            content: 
+                              GridView.count(
+                                crossAxisCount: 4,
+                                childAspectRatio: 0.7,
+                                children: [
+                                  serviceWidget("sendMoney", "Enviar Cripto"),
+                                  serviceWidget("receiveMoney", "Receber Cripto"),
+                                ]
+                            ),
+                                            
+                            actions: 
+                              <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                                  child: const Text('Voltar'),
+                                ),
+                              ],
+
+                          ),
+                      ),
+                                      ),
+                  )
+                 )
+               ],
+             ),
+
           ],
         ),
       ),
     );
   }
 
-  Column serviceWidget(String img, String name) {
-    return Column(
-      children: [
-        Expanded(
-          child: InkWell(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Color(0xfff1f3f6),
-              ),
-              child: Center(
-                child: Container(
-                  margin: EdgeInsets.all(25),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/$img.png'))),
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          name,
-          style: TextStyle(
-            fontFamily: 'avenir',
-            fontSize: 14,
-          ),
-          textAlign: TextAlign.center,
-        )
-      ],
-    );
-  }
+   Column serviceWidget(String img, String name) {
+
+     var icon;
+     if (img == "receiveMoney") {
+
+        icon = Icon(
+            Icons.monetization_on,
+            size: 20,
+            color: Colors.white,
+          );
+
+
+      }
+
+      if (img == "sendMoney") {
+
+        icon = Icon(
+            Icons.monetization_on_outlined,
+            size: 20,
+            color: Colors.white,
+          );
+
+
+      }
+
+      
+
+     return Column(
+       children: [
+         Expanded(
+           child: InkWell(
+             onTap: () {},
+             child: Container(
+               margin: EdgeInsets.all(4),
+               decoration: BoxDecoration(
+                 borderRadius: BorderRadius.all(Radius.circular(20)),
+                 color: Colors.black,
+                 border: Border.all(color: Color(0xffadff2f))
+               ),
+               child: Center(
+                 child: icon
+               ),
+             ),
+           ),
+         ),
+         SizedBox(
+           height: 5,
+         ),
+         Text(
+           name,
+           style: TextStyle(
+             fontFamily: 'avenir',
+             fontSize: 14,
+             color: Colors.white,
+           ),
+           textAlign: TextAlign.center,
+         )
+       ],
+     );
+   }
 
   Container avatarWidget(String img, String name) {
     return Container(
       margin: EdgeInsets.only(right: 10),
-      height: 150,
+      height: 80,
       width: 120,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Color(0xfff1f3f6)),
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+                color: Colors.black,
+                border: Border.all(color: Color(0xffadff2f))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            height: 60,
+            height: 50,
             width: 60,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                image: DecorationImage(
-                    image: AssetImage('assets/images/$img.png'),
-                    fit: BoxFit.contain),
-                border: Border.all(color: Colors.black, width: 2)),
           ),
           Text(
             name,
@@ -265,7 +330,8 @@ class _personalWalletState extends State<personalWallet> {
                 fontSize: 16,
                 fontFamily: 'avenir',
                 fontWeight: FontWeight.w700),
-          )
+          ),
+          
         ],
       ),
     );

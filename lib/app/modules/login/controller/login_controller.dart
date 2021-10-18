@@ -1,3 +1,4 @@
+import 'package:bankinspace/app/data/providers/api_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,6 +49,8 @@ class LoginController extends GetxController {
   }
 
   void login() {
+
+    AuthAPI().authUser(emailController.text, passwordController.text);
     
   }
 }

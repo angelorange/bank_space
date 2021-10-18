@@ -1,6 +1,10 @@
 import 'dart:convert';
 
 import 'package:bankinspace/app/data/models/notification_model.dart';
+import 'package:bankinspace/app/data/models/user_model.dart';
+import 'package:bankinspace/app/data/models/wallet_model.dart';
+import 'package:bankinspace/app/modules/personal_page/widgets/personal.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 const baseUrl = 'https://6159ff0a601e6f0017e5a380.mockapi.io/api/v1/users';
@@ -47,6 +51,83 @@ class AuthAPI extends BaseApi {
 
     return response.body;
     }
+
+
+  Future<User> getUser(String result) async {
+    var head = super.headers;
+    head['Authorization'] = result;
+    http.Response response =
+        await http.get(Uri.parse(super.profilePath), headers: head);
+
+
+    String sJson = response.body;
+    User user = userfromJson(sJson, result);
+
+    return user;
+  }
+
+  Future<Wallet> getWallet(String result, User user) async {
+    var head = super.headers;
+    head['Authorization'] = result;
+    http.Response response =
+        await http.get(Uri.parse(super.walletPath), headers: head);
+
+
+    String sJson = response.body;
+    Wallet wallet = WalletfromJson(sJson, user);
+
+    return wallet;
+  }
+
+
+
+  void authUser(String email, String pass) {
+
+    loginAuth( email, pass ).then((result) {
+
+      var jr = "";
+
+      try {
+
+          var json_result = json.decode(result) as Map<String, dynamic>;
+
+
+          jr = json_result['jwt'].toString();
+
+       
+    
+          getUser(jr).then((auth) { 
+              
+
+
+            getWallet(jr, auth).then((wallet){
+
+             
+              createLoginNotification();
+              Get.to(() => HomeWithSidebar(auth, wallet));
+            
+            
+            });
+          
+          });
+      
+      
+       } on FormatException catch (e) {
+
+         createInvalidLoginNotification();
+
+       }
+      
+
+    
+    });
+
+  }
+
+
+
+
+    
 
 
   void signUpfromJson(String username, String  email, String birthday, String cpf, String fullname, String password) {

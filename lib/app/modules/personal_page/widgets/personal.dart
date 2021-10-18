@@ -1,27 +1,50 @@
+import 'package:bankinspace/app/data/models/user_model.dart';
+import 'package:bankinspace/app/data/models/wallet_model.dart';
 import 'package:flutter/material.dart';
 import 'package:bankinspace/app/modules/personal_page/widgets/personal_wallet.dart';
 import 'package:get/get.dart';
 import 'package:bankinspace/app/modules/home/widgets/home_page.dart';
 
 class HomeWithSidebar extends StatelessWidget {
+
+  final User user;
+  final Wallet wallet;
+
+  const HomeWithSidebar(this.user, this.wallet);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: homeWithSidebar(),
+      home: homeWithSidebar(this.user, this.wallet),
     );
   }
 }
 
 class homeWithSidebar extends StatefulWidget {
+
+  final User user;
+  final Wallet wallet;
+
+  const homeWithSidebar(this.user, this.wallet);
+
   @override
-  _homeWithSidebarState createState() => _homeWithSidebarState();
+  _homeWithSidebarState createState() => _homeWithSidebarState(this.user, this.wallet);
 }
 
 class _homeWithSidebarState extends State<homeWithSidebar>
     with TickerProviderStateMixin {
+
+  final User user;
+  final Wallet wallet;
+
+  _homeWithSidebarState(this.user, this.wallet);
+
+
+  
   bool sideBarActive = false;
   AnimationController? rotationController;
+  
   @override
   void initState() {
     // TODO: implement initState
@@ -34,7 +57,7 @@ class _homeWithSidebarState extends State<homeWithSidebar>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff1f3f6),
+      backgroundColor: Color(0xff4b0082),
       body: Stack(
         children: [
           Column(
@@ -46,8 +69,11 @@ class _homeWithSidebarState extends State<homeWithSidebar>
                     height: 150,
                     width: MediaQuery.of(context).size.width * 0.6,
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.only(bottomRight: Radius.circular(60)),
+                        image: DecorationImage(
+                                    image:
+                                        AssetImage('assets/images/bg3.jpg'),
+                                    fit: BoxFit.cover),
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
                         color: Colors.white),
                     child: Center(
                       child: Row(
@@ -72,16 +98,16 @@ class _homeWithSidebarState extends State<homeWithSidebar>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Jesus Gautama",
+                                user.username,
                                 style: TextStyle(
-                                    fontSize: 19, fontWeight: FontWeight.w700),
+                                    fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
                               ),
                               Text(
-                                "São Paulo - SP",
+                                user.fullname,
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w400,
-                                    color: Colors.grey),
+                                    color: Colors.white),
                               )
                             ],
                           )
@@ -96,7 +122,7 @@ class _homeWithSidebarState extends State<homeWithSidebar>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(child: navigatorTitle("Home", true,), onTap: () {
-                      Get.to(HomePage());
+                      Get.to(() => HomePage());
                     },),
                     InkWell(child: navigatorTitle("Profile", false,), onTap: () {
 
@@ -117,12 +143,12 @@ class _homeWithSidebarState extends State<homeWithSidebar>
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(HomePage());
+                        Get.to(() => HomePage());
                       },
                       child: Text(
                         "Logout",
                         style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)
                       ),
                     )
                   ],
@@ -133,7 +159,7 @@ class _homeWithSidebarState extends State<homeWithSidebar>
                 padding: EdgeInsets.all(20),
                 child: Text(
                   "Ver 2.0.1",
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.white),
                 ),
               )
             ],
@@ -158,8 +184,8 @@ class _homeWithSidebarState extends State<homeWithSidebar>
                     borderRadius: BorderRadius.all(Radius.circular(40)),
                     color: Colors.white),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(40)),
-                  child: personalWallet(),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: personalWallet(wallet),
                 ),
               ),
             ),
@@ -173,21 +199,20 @@ class _homeWithSidebarState extends State<homeWithSidebar>
                     onPressed: closeSideBar,
                     icon: Icon(
                       Icons.close,
-                      color: Colors.black,
+                      color: Colors.white,
                       size: 30,
                     ),
                   )
-                : InkWell(
-                    onTap: openSideBar,
-                    child: Container(
-                      margin: EdgeInsets.all(17),
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/menu.png'))),
+                : IconButton(
+                    padding: EdgeInsets.all(30),
+                    onPressed: openSideBar,
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                      size: 30,
                     ),
-                  ),
+                  )
+                  
           )
         ],
       ),
@@ -201,7 +226,7 @@ class _homeWithSidebarState extends State<homeWithSidebar>
             ? Container(
                 width: 5,
                 height: 60,
-                color: Color(0xffffac30),
+                color: Color(0xffadff2f),
               )
             : Container(
                 width: 5,
@@ -215,7 +240,7 @@ class _homeWithSidebarState extends State<homeWithSidebar>
           name,
           style: TextStyle(
               fontSize: 16,
-              fontWeight: (isSelected) ? FontWeight.w700 : FontWeight.w400),
+              fontWeight: (isSelected) ? FontWeight.w700 : FontWeight.w400, color: Colors.white),
         )
       ],
     );
