@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bank_space">
+    package="com.example.bankinspace">
    <application
-        android:label="bank_space"
+        android:label="bankinspace"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

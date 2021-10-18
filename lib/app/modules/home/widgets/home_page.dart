@@ -1,4 +1,4 @@
-import 'package:bank_space/app/modules/login/widgets/login_view.dart';
+import 'package:bankinspace/app/modules/login/widgets/login_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 

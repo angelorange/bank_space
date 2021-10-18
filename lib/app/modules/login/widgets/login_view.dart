@@ -1,7 +1,7 @@
-import 'package:bank_space/app/modules/sign_up/widgets/sign_up_view.dart';
+import 'package:bankinspace/app/modules/sign_up/widgets/sign_up_view.dart';
 import 'package:flutter/material.dart';
-import 'package:bank_space/app/modules/home/widgets/home_page.dart';
-import 'package:bank_space/app/modules/login/controller/login_controller.dart';
+import 'package:bankinspace/app/modules/home/widgets/home_page.dart';
+import 'package:bankinspace/app/modules/login/controller/login_controller.dart';
 import 'package:get/get.dart';
 
 class LoginPageState extends GetView<LoginController> {

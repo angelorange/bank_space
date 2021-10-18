@@ -1,9 +1,9 @@
-import 'package:bank_space/app/modules/home/widgets/home_page.dart';
-import 'package:bank_space/app/modules/personal_page/widgets/personal_wallet.dart';
-import 'package:bank_space/app/modules/sign_up/controller/sign_up_controller.dart';
+import 'package:bankinspace/app/modules/home/widgets/home_page.dart';
+import 'package:bankinspace/app/modules/personal_page/widgets/personal_wallet.dart';
+import 'package:bankinspace/app/modules/sign_up/controller/sign_up_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:bank_space/app/modules/login/widgets/login_view.dart';
-import 'package:bank_space/app/modules/personal_page/widgets/profile.dart';
+import 'package:bankinspace/app/modules/login/widgets/login_view.dart';
+import 'package:bankinspace/app/modules/personal_page/widgets/profile.dart';
 import 'package:get/get.dart';
 
 class SignUpView extends GetView<SignUpController> {

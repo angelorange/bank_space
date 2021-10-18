@@ -1,6 +1,6 @@
 {
-    "name": "bank_space",
-    "short_name": "bank_space",
+    "name": "bankinspace",
+    "short_name": "bankinspace",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

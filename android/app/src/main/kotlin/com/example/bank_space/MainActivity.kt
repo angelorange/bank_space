@@ -1,4 +1,4 @@
-package com.example.bank_space
+package com.example.bankinspace
 
 import io.flutter.embedding.android.FlutterActivity
 
