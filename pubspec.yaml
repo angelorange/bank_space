@@ -38,6 +38,7 @@ dependencies:
   http: ^0.13.4
   get: ^4.3.8
   google_fonts: ^2.1.0
+  awesome_notifications: ^0.0.6+10
 
 dev_dependencies:
   flutter_test:

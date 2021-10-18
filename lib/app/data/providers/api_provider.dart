@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bankinspace/app/data/models/notification_model.dart';
 import 'package:http/http.dart' as http;
 
 const baseUrl = 'https://6159ff0a601e6f0017e5a380.mockapi.io/api/v1/users';
@@ -78,26 +79,23 @@ class AuthAPI extends BaseApi {
 
         if (jsonia != null) {
 
-
-          //Todo Notifications
-
          
-          // if (jsonia['message'] != null ) { createSignUpNotification(); }
+          if (jsonia['message'] != null ) { createSignUpNotification(); }
 
           
-          // if (jsonia['username'] != null ) { createUsernameExistsNotification(); }
+          if (jsonia['username'] != null ) { createUsernameExistsNotification(); }
 
           
-          // if (jsonia['fullname'] != null ) { createFullnameErrorNotification(); }
+          if (jsonia['fullname'] != null ) { createFullnameErrorNotification(); }
 
           
-          // if (jsonia['cpf'] != null ) { createCPFExistsNotification(); }
+          if (jsonia['cpf'] != null ) { createCPFExistsNotification(); }
 
           
-          // if (jsonia['birthday'] != null ) { createBirthdayErrorNotification(); }
+          if (jsonia['birthday'] != null ) { createBirthdayErrorNotification(); }
 
         
-          // if (jsonia['email'] != null ) { createEmailExistsNotification(); }
+          if (jsonia['email'] != null ) { createEmailExistsNotification(); }
 
          
 
