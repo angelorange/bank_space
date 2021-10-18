@@ -1,3 +1,4 @@
+import 'package:bankinspace/app/data/providers/api_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +10,16 @@ class SignUpController extends GetxController {
     passwordController,
     cpfController,
     birthdayController,
+    fullnameController,
     usernameController = TextEditingController();
     var username = '';
     var cpf = '';
+    var fullname = '';
     var email = '';
     var password = '';
     var birthday = '';
+
+    
   @override
   void onInit() {
     super.onInit();
@@ -22,6 +27,7 @@ class SignUpController extends GetxController {
     passwordController = TextEditingController();
     usernameController = TextEditingController();
     cpfController = TextEditingController();
+    fullnameController = TextEditingController();
     birthdayController = TextEditingController();
   }
 
@@ -36,11 +42,12 @@ class SignUpController extends GetxController {
     passwordController.dispose();
     usernameController.dispose();
     cpfController.dispose();
+    fullnameController.dispose();
     birthdayController.dispose();
   }
 
   String? validateEmail(String value) {
-    if (value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+    if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
       return "Enter correct email";
     } else {
       return null;
@@ -48,8 +55,16 @@ class SignUpController extends GetxController {
   }
 
   String? validateUsername(String value) {
-    if (value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-      return "Enter correct email";
+    if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+      return "Enter correct username";
+    } else {
+      return null;
+    }
+  }
+
+  String? validateFullname(String value) {
+    if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+      return "Enter correct full name";
     } else {
       return null;
     }
@@ -62,13 +77,6 @@ class SignUpController extends GetxController {
   //   return null;
   // }
 
-  // Api Simulation
-  Future<bool> checkUser(String user, String password) {
-    if (user == 'foo@foo.com' && password == '123') {
-      return Future.value(true);
-    }
-    return Future.value(false);
-  }
 
   String? validatePassword(String value) {
     String pattern =
@@ -99,26 +107,28 @@ class SignUpController extends GetxController {
         return null;
     }
   }
+
+  String? validateCPF(String value) {
+    
+    if (value.isEmpty) {
+      return 'Please enter your CPF';
+    } else {
+      return null;
+    }
+  }
   
 
-  void login() {
-    if (loginFormKey.currentState!.validate()) {
-      checkUser(emailController.text, passwordController.text).then((auth) {
-        if (auth) {
-          Get.snackbar('Login', 'Login successfully');
-        } else {
-          Get.snackbar('Login', 'Invalid email or password');
-        }
-        passwordController.clear();
-      });
-    }
+  
+
+  void signUp() {
+
+    AuthAPI().signUpfromJson( usernameController.text,
+                              emailController.text,
+                              birthdayController.text,
+                              cpfController.text,
+                              fullnameController.text,
+                              passwordController.text);
+   
   }
 
-  void checkLogin() {
-    final isValid = loginFormKey.currentState!.validate();
-    if (!isValid) {
-      return;
-    }
-    loginFormKey.currentState!.save();
-  }
 }

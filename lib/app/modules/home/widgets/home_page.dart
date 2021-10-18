@@ -1,9 +1,70 @@
-import 'package:bank_space/app/modules/login/widgets/login_view.dart';
+import 'package:bankinspace/app/modules/login/widgets/login_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    AwesomeNotifications().isNotificationAllowed().then(
+      (isAllowed) {
+        if (!isAllowed) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              backgroundColor: Colors.black ,
+
+              title: Text('Autorizar Notificações?',
+                        style: TextStyle(color: Colors.white,)),
+
+              content: Text('Este aplicativo precisa de autorização para lhe mostrar notificações',
+                        style: TextStyle(color: Colors.white,)),
+
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Não',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () => AwesomeNotifications()
+                      .requestPermissionToSendNotifications()
+                      .then((_) => Navigator.pop(context)),
+                  child: Text(
+                    'Sim',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+      },
+    );
+  }
+
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {

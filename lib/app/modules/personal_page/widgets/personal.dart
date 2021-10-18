@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:bank_space/app/modules/personal_page/widgets/personal_wallet.dart';
+import 'package:bankinspace/app/modules/personal_page/widgets/personal_wallet.dart';
 import 'package:get/get.dart';
-import 'package:bank_space/app/modules/home/widgets/home_page.dart';
+import 'package:bankinspace/app/modules/home/widgets/home_page.dart';
 
 class HomeWithSidebar extends StatelessWidget {
   @override

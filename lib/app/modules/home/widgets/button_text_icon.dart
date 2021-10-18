@@ -16,7 +16,7 @@ class ButtonText extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("tapped porra");
+        
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 30),

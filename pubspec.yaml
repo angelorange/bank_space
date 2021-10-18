@@ -1,5 +1,5 @@
-name: bank_space
-description: A new Flutter project.
+name: bankinspace
+description: Outerspace Blockchain eWallet.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -38,6 +38,7 @@ dependencies:
   http: ^0.13.4
   get: ^4.3.8
   google_fonts: ^2.1.0
+  awesome_notifications: ^0.0.6+10
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     - assets/images/cloud.png
     - assets/images/flight.png
     - assets/images/jex.jpg
+    - assets/images/bg3.jpg
     - assets/images/logo.png
     - assets/images/menu.png
     - assets/images/more.png

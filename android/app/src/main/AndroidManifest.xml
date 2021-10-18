@@ -1,7 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bank_space">
+    package="com.example.bankinspace">
+
+    <uses-permission 
+        android:name="android.permission.INTERNET"/>
+        
    <application
-        android:label="bank_space"
+        android:label="bankinspace"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -1,4 +1,4 @@
-# Bank_Space
+# bankinspace
 
 A Cryptocurrency Wallet for the college project.
 
