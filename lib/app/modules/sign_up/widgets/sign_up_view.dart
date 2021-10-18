@@ -3,7 +3,7 @@ import 'package:bankinspace/app/modules/personal_page/widgets/personal_wallet.da
 import 'package:bankinspace/app/modules/sign_up/controller/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:bankinspace/app/modules/login/widgets/login_view.dart';
-import 'package:bankinspace/app/modules/personal_page/widgets/profile.dart';
+import 'package:bankinspace/app/modules/personal_page/widgets/personal.dart';
 import 'package:get/get.dart';
 
 class SignUpView extends GetView<SignUpController> {

@@ -40,7 +40,7 @@ class SignUpController extends GetxController {
   }
 
   String? validateEmail(String value) {
-    if (value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+    if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
       return "Enter correct email";
     } else {
       return null;
@@ -48,7 +48,7 @@ class SignUpController extends GetxController {
   }
 
   String? validateUsername(String value) {
-    if (value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+    if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
       return "Enter correct email";
     } else {
       return null;
