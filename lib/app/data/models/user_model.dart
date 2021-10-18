@@ -1,8 +1,5 @@
-// To parse this JSON data, do
-//
-//     final user = userFromJson(jsonString);
-
 import 'dart:convert';
+
 
 
 class User {
@@ -24,4 +21,24 @@ class User {
     int id;
     String token;
 
+}
+
+
+// Creates user object from Json
+userfromJson(String string, String token) { 
+ 
+  Map<String, dynamic> user_json = jsonDecode(string);
+  
+
+  User user = User(
+        email: user_json['user']['email'],
+        username: user_json['user']['username'],
+        fullname: user_json['user']['fullname'],
+        cpf: user_json['user']['cpf'],
+        birthday: user_json['user']['birthday'],
+        id: user_json['user']['id'],
+        token: token
+  );
+
+  return user;
 }

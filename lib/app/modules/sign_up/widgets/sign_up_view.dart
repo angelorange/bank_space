@@ -1,9 +1,6 @@
-import 'package:bankinspace/app/modules/home/widgets/home_page.dart';
-import 'package:bankinspace/app/modules/personal_page/widgets/personal_wallet.dart';
 import 'package:bankinspace/app/modules/sign_up/controller/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:bankinspace/app/modules/login/widgets/login_view.dart';
-import 'package:bankinspace/app/modules/personal_page/widgets/personal.dart';
 import 'package:get/get.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -42,21 +39,95 @@ class SignUpView extends GetView<SignUpController> {
             ),
           ),
           Container(
+              decoration: BoxDecoration(
+
+                color: Colors.black,
+      
+                ),
               padding: EdgeInsets.only(top: 40.0, left: 20.0, right: 30.0),
               child: Column(
                 children: <Widget>[
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: 'Username',
+                      labelText: 'Nome Completo',
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                            color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
                     ),
                     keyboardType: TextInputType.name,
+                    controller: controller.fullnameController,
+                    onSaved: (value) {
+                      controller.fullname = value!;
+                    },
+                    validator: (value) {
+                      return controller.validateFullname(value!);
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'CPF',
+                      labelStyle: TextStyle(
+                          fontFamily: 'Righteous',
+                          fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                    ),
+                    keyboardType: TextInputType.name,
+                    controller: controller.cpfController,
+                    onSaved: (value) {
+                      controller.cpf = value!;
+                    },
+                    validator: (value) {
+                      return controller.validateCPF(value!);
+                    },
+                  ),
+                  SizedBox(height: 10.0),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Email ',
+                      labelStyle: TextStyle(
+                          fontFamily: 'Righteous',
+                          fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    controller: controller.emailController,
+                    onSaved: (value) {
+                      controller.email = value!;
+                    },
+                    validator: (value) {
+                      return controller.validateEmail(value!);
+                    },
+                    obscureText: false,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Nome de usuário ',
+                      labelStyle: TextStyle(
+                          fontFamily: 'Righteous',
+                          fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                      ),
+                    ),
                     controller: controller.usernameController,
                     onSaved: (value) {
                       controller.username = value!;
@@ -64,14 +135,17 @@ class SignUpView extends GetView<SignUpController> {
                     validator: (value) {
                       return controller.validateUsername(value!);
                     },
+                    obscureText: false,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: 'Birthday',
+                      labelText: 'Data de Nascimento',
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                            color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
@@ -85,78 +159,20 @@ class SignUpView extends GetView<SignUpController> {
                       return controller.validateBirthday(value!);
                     },
                   ),
-                  SizedBox(height: 10.0),
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: 'Email ',
+                      labelText: 'Senha',
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                            color: Colors.black),
+                        filled: true,
+                        fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    controller: controller.emailController,
-                    onSaved: (value) {
-                      controller.email = value!;
-                    },
-                    validator: (value) {
-                      return controller.validateEmail(value!);
-                    },
-                    obscureText: true,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Cpf ',
-                      labelStyle: TextStyle(
-                          fontFamily: 'Righteous',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green),
-                      ),
-                    ),
-                    // validator: (value) {
-                    //   if (value!.isEmpty || !RegExp())
-                    // },
-                    obscureText: true,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Password ',
-                      labelStyle: TextStyle(
-                          fontFamily: 'Righteous',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green),
-                      ),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    controller: controller.emailController,
-                    onSaved: (value) {
-                      controller.password = value!;
-                    },
-                    validator: (value) {
-                      return controller.validatePassword(value!);
-                    },
-                    obscureText: true,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Confirm Password ',
-                      labelStyle: TextStyle(
-                          fontFamily: 'Righteous',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green),
-                      ),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    controller: controller.emailController,
+                    controller: controller.passwordController,
                     onSaved: (value) {
                       controller.password = value!;
                     },
@@ -174,23 +190,30 @@ class SignUpView extends GetView<SignUpController> {
                         borderRadius: BorderRadius.circular(20.0),
                         elevation: 7.0,
                         child: ElevatedButton(
+
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.purple,
+                              onPrimary: Colors.white,
+                              fixedSize: Size(250, 70),
+                              elevation: 5),
+                          
                           onPressed: () {
-                            // Submit Button 
+                            controller.signUp();
                           },
                           
-                          child: Text(
-                            'Submit',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Righteous'),
-                          ),
+                            child: Text(
+                              'Confirmar',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Righteous'),
+                            ),
                         ),
                       )),
                   SizedBox(height: 20.0),
                   Container(
                     height: 40.0,
-                    color: Colors.transparent,
+                    color: Colors.black,
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(
@@ -201,14 +224,14 @@ class SignUpView extends GetView<SignUpController> {
                           borderRadius: BorderRadius.circular(20.0)),
                       child: InkWell(
                         onTap: () {
-                          Get.to(LoginPageState());
+                          Get.to(() => LoginPageState());
                         },
                         child: Center(
                           child: Text(
-                            'Go Back',
+                            'Voltar',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontFamily: 'Righteous'),
+                                fontFamily: 'Righteous', color:  Colors.white),
                           ),
                         ),
                       ),
@@ -216,8 +239,6 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                 ],
               )),
-          Container(),
-          SizedBox(height: 35.0),
         ]));
   }
 }

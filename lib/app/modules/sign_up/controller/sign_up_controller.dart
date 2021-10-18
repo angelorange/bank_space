@@ -1,3 +1,4 @@
+import 'package:bankinspace/app/data/providers/api_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +10,16 @@ class SignUpController extends GetxController {
     passwordController,
     cpfController,
     birthdayController,
+    fullnameController,
     usernameController = TextEditingController();
     var username = '';
     var cpf = '';
+    var fullname = '';
     var email = '';
     var password = '';
     var birthday = '';
+
+    
   @override
   void onInit() {
     super.onInit();
@@ -22,6 +27,7 @@ class SignUpController extends GetxController {
     passwordController = TextEditingController();
     usernameController = TextEditingController();
     cpfController = TextEditingController();
+    fullnameController = TextEditingController();
     birthdayController = TextEditingController();
   }
 
@@ -36,6 +42,7 @@ class SignUpController extends GetxController {
     passwordController.dispose();
     usernameController.dispose();
     cpfController.dispose();
+    fullnameController.dispose();
     birthdayController.dispose();
   }
 
@@ -49,11 +56,26 @@ class SignUpController extends GetxController {
 
   String? validateUsername(String value) {
     if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-      return "Enter correct email";
+      return "Enter correct username";
     } else {
       return null;
     }
   }
+
+  String? validateFullname(String value) {
+    if (value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+      return "Enter correct full name";
+    } else {
+      return null;
+    }
+  }
+
+  // String? validatePassword(String value) {
+  //   if (value.length < 6) {
+  //     return "Password must be of 6 characters";
+  //   }
+  //   return null;
+  // }
 
 
   String? validatePassword(String value) {
@@ -85,9 +107,27 @@ class SignUpController extends GetxController {
         return null;
     }
   }
+
+  String? validateCPF(String value) {
+    
+    if (value.isEmpty) {
+      return 'Please enter your CPF';
+    } else {
+      return null;
+    }
+  }
+  
+
   
 
   void signUp() {
+
+    AuthAPI().signUpfromJson( usernameController.text,
+                              emailController.text,
+                              birthdayController.text,
+                              cpfController.text,
+                              fullnameController.text,
+                              passwordController.text);
    
   }
 

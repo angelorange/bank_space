@@ -46,4 +46,67 @@ class AuthAPI extends BaseApi {
 
     return response.body;
     }
+
+
+  void signUpfromJson(String username, String  email, String birthday, String cpf, String fullname, String password) {
+
+      signUpAuth( username,
+                  email,
+                  birthday,
+                  cpf,
+                  fullname,
+                  password
+                  )
+      .then((result) {
+       
+
+        var jsonia;
+
+        try {
+
+          var json_result = json.decode(result) as Map<String, dynamic>;
+
+
+          jsonia = json_result;
+
+        } on FormatException catch (e) {
+
+         print(e);
+
+        }
+
+
+        if (jsonia != null) {
+
+
+          //Todo Notifications
+
+         
+          // if (jsonia['message'] != null ) { createSignUpNotification(); }
+
+          
+          // if (jsonia['username'] != null ) { createUsernameExistsNotification(); }
+
+          
+          // if (jsonia['fullname'] != null ) { createFullnameErrorNotification(); }
+
+          
+          // if (jsonia['cpf'] != null ) { createCPFExistsNotification(); }
+
+          
+          // if (jsonia['birthday'] != null ) { createBirthdayErrorNotification(); }
+
+        
+          // if (jsonia['email'] != null ) { createEmailExistsNotification(); }
+
+         
+
+        }
+
+    });
+
+  }
+
+
+    
 }
