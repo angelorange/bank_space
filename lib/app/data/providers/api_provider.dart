@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bankinspace/app/data/models/notification_model.dart';
+import 'package:bankinspace/app/data/models/transaction_model.dart';
 import 'package:bankinspace/app/data/models/user_model.dart';
 import 'package:bankinspace/app/data/models/wallet_model.dart';
 import 'package:bankinspace/app/modules/personal_page/widgets/personal.dart';
@@ -16,6 +17,7 @@ class BaseApi{
   var authPath = api + "/sign_in"; //exemplo
   var profilePath = api + "/api/v1/profile"; //exemplo
   var walletPath = api + "/api/v1/wallets"; //exemplo
+  var transactPath = api + "/api/v1/transactions"; //exemplo
 
   Map<String, String> headers = {
     "Content-Type": "application/json; charset=UTF-8"
@@ -80,7 +82,6 @@ class AuthAPI extends BaseApi {
   }
 
 
-
   void authUser(String email, String pass) {
 
     loginAuth( email, pass ).then((result) {
@@ -121,6 +122,36 @@ class AuthAPI extends BaseApi {
 
     
     });
+
+  }
+
+  confirmedTransaction(String username, double value, User user) async {
+
+    
+
+      try {
+
+        var body = jsonEncode( { 'transaction':  {'receiver_username': username, 'value': value} } );
+
+        var head = super.headers;
+        head['Authorization'] = user.token;
+            http.Response response =
+                await http.post(Uri.parse(super.transactPath), headers: head, body: body);
+
+
+        String sJson = response.body;
+       
+
+        var json_result = json.decode(sJson) as Map<String, dynamic>;
+
+      
+       } on FormatException catch (e) {
+
+         createInvalidLoginNotification();
+
+       }
+      
+
 
   }
 
