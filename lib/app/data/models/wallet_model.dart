@@ -23,3 +23,4 @@ WalletfromJson(String s_wallet, User user) {
 
   return wallet;
 }
+

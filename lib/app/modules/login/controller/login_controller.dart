@@ -40,13 +40,6 @@ class LoginController extends GetxController {
     return null;
   }
 
-  // Api Simulation
-  Future<bool> checkUser(String user, String password) {
-    if (user == 'foo@foo.com' && password == '123') {
-      return Future.value(true);
-    }
-    return Future.value(false);
-  }
 
   void login() {
 

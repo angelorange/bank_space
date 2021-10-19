@@ -115,3 +115,61 @@ Future<void> createLoginNotification() async {
       ),
     );
 }
+
+
+Future<void> createTransactionConfirmedS(double double, String username) async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent
+    (
+      id: 6,
+      channelKey: 'basic_channel',
+      title: 'Você realizous uma transfêrencia',
+      body: 'Você realizous uma transfêrencia de OC\$ $double para $username',
+      notificationLayout: NotificationLayout.Default
+      ),
+    );
+}
+
+
+
+Future<void> createTransactionFailed() async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent
+    (
+      id: 6,
+      channelKey: 'basic_channel',
+      title: 'Sua transfêrencia falhou',
+      body: 'Verifique os dados inseridos e tente novamente',
+      notificationLayout: NotificationLayout.Default
+      ),
+    );
+}
+
+
+
+
+Future<void> createYouHaveNoMoney() async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent
+    (
+      id: 6,
+      channelKey: 'basic_channel',
+      title: 'Saldo Insuficiente',
+      body: 'Lembre-se da taxa de OC\$4,00',
+      notificationLayout: NotificationLayout.Default
+      ),
+    );
+}
+
+Future<void> createInvalidUser() async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent
+    (
+      id: 6,
+      channelKey: 'basic_channel',
+      title: 'Este usuário nõo existe',
+      body: 'Verifique os dados inseridos',
+      notificationLayout: NotificationLayout.Default
+      ),
+    );
+}
