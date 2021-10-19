@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bankinspace/app/data/models/wallet_model.dart';
 import 'package:bankinspace/app/data/providers/api_provider.dart';
 import 'package:bankinspace/app/modules/transaction/bindings/transaction_binding.dart';
-import 'package:bankinspace/app/modules/transaction/controller/transaction_controller.dart';
 import 'package:bankinspace/app/modules/transaction/widgets/transaction_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

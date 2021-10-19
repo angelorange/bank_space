@@ -127,7 +127,7 @@ class AuthAPI extends BaseApi {
 
   confirmedTransaction(String username, double value, User user) async {
 
-    
+      var json_result;
 
       try {
 
@@ -142,15 +142,20 @@ class AuthAPI extends BaseApi {
         String sJson = response.body;
        
 
-        var json_result = json.decode(sJson) as Map<String, dynamic>;
+        json_result = json.decode(sJson) as Map<String, dynamic>;
 
       
        } on FormatException catch (e) {
 
-         createInvalidLoginNotification();
+         createTransactionFailed();
 
        }
-      
+
+
+       if (json_result['message'] == "Este usuario não existe, verifique o digitado") {createInvalidUser();}
+       if (json_result['message'].contains( "Saldo Insuficiente")) {createYouHaveNoMoney();}
+       if (json_result['message'] =="Ocorreu algum erro, tente novamente mais tarde") {createTransactionFailed();}
+       if (json_result['message'] == "Transferência realizada com sucesso." ) {createTransactionConfirmedS(value, username);}
 
 
   }
