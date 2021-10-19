@@ -110,7 +110,7 @@ Future<void> createLoginNotification() async {
       id: 6,
       channelKey: 'basic_channel',
       title: 'Uuário logado com sucesso',
-      body: 'Bem-Vindo ao BankInSpace',
+      body: 'Bem-Vindo ao bankinspace',
       notificationLayout: NotificationLayout.Default
       ),
     );

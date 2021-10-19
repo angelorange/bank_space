@@ -1,14 +1,11 @@
 import 'dart:convert';
 
 import 'package:bankinspace/app/data/models/notification_model.dart';
-import 'package:bankinspace/app/data/models/transaction_model.dart';
 import 'package:bankinspace/app/data/models/user_model.dart';
 import 'package:bankinspace/app/data/models/wallet_model.dart';
 import 'package:bankinspace/app/modules/personal_page/widgets/personal.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
-const baseUrl = 'https://6159ff0a601e6f0017e5a380.mockapi.io/api/v1/users';
 
 class BaseApi{
   static String base = "https://protected-wave-74168.herokuapp.com"; //pra testar o cod, isso é um mock

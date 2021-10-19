@@ -5,7 +5,7 @@
         android:name="android.permission.INTERNET"/>
         
    <application
-        android:label="bankinspace"
+        android:label="BankInSpace"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
