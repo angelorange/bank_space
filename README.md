@@ -11,17 +11,16 @@ O BankSpace é um aplicativo cujo objetivo é facilitar a transação de criptom
   
   ![photo5166169131475642696](https://user-images.githubusercontent.com/40286179/138612083-870b2d31-cac6-483a-a3c8-97e216374f4a.jpg)
 
-
 ### Coisas técnicas :)
  O App foi construído com a linguagem [Dart], e framework [Flutter].
  Consumimos a API que já existia do projeto original DevinInSpace.
  
  Dependencias usadas:
- - Getx
- - Google Fonts
- - HTTP
- - Awesome Notifications
- - Flutter Login
+ - [Getx](https://pub.dev/packages/get)
+ - [Google Fonts](https://pub.dev/packages/google_fonts)
+ - [HTTP](https://pub.dev/packages/http)
+ - [Awesome Notifications](https://pub.dev/packages/awesome_notifications)
+ - [Flutter Login](https://pub.dev/packages/flutter_login)
 
  A estrutura do projeto está alinhada com patterns do Getx para a melhor leitura do código.
 ## Feito por
