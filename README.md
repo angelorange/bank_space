@@ -6,7 +6,11 @@ O BankSpace é um aplicativo cujo objetivo é facilitar a transação de criptom
 ## App Roadmap
   Nosso App aindá esta em [WIP], porém estamos organizando o mais rápido possível para recebe-los!
   Abaixo algumas imagens:
-  ![photo5166169131475642693](https://user-images.githubusercontent.com/40286179/138611839-91db8f5b-460f-4f06-89e9-2704719f582c.jpg
+  
+  ![photo5166169131475642693](https://user-images.githubusercontent.com/40286179/138612032-459dd437-bfbb-4976-91ee-3d3672af6216.jpg)
+  
+  
+
 
 ### Coisas técnicas :)
  O App foi construído com a linguagem [Dart], e framework [Flutter].
