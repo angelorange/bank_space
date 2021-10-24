@@ -7,19 +7,18 @@ class SignUpController extends GetxController {
   final _formKey = GlobalKey<FormState>();
 
   late TextEditingController emailController,
-    passwordController,
-    cpfController,
-    birthdayController,
-    fullnameController,
-    usernameController = TextEditingController();
-    var username = '';
-    var cpf = '';
-    var fullname = '';
-    var email = '';
-    var password = '';
-    var birthday = '';
+      passwordController,
+      cpfController,
+      birthdayController,
+      fullnameController,
+      usernameController = TextEditingController();
+  var username = '';
+  var cpf = '';
+  var fullname = '';
+  var email = '';
+  var password = '';
+  var birthday = '';
 
-    
   @override
   void onInit() {
     super.onInit();
@@ -77,7 +76,6 @@ class SignUpController extends GetxController {
   //   return null;
   // }
 
-
   String? validatePassword(String value) {
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
@@ -93,7 +91,7 @@ class SignUpController extends GetxController {
     }
   }
 
-    String? validateBirthday(String value) {
+  String? validateBirthday(String value) {
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regex = new RegExp(pattern);
@@ -109,26 +107,20 @@ class SignUpController extends GetxController {
   }
 
   String? validateCPF(String value) {
-    
     if (value.isEmpty) {
       return 'Please enter your CPF';
     } else {
       return null;
     }
   }
-  
-
-  
 
   void signUp() {
-
-    AuthAPI().signUpfromJson( usernameController.text,
-                              emailController.text,
-                              birthdayController.text,
-                              cpfController.text,
-                              fullnameController.text,
-                              passwordController.text);
-   
+    AuthAPI().signUpfromJson(
+        usernameController.text,
+        emailController.text,
+        birthdayController.text,
+        cpfController.text,
+        fullnameController.text,
+        passwordController.text);
   }
-
 }

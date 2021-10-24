@@ -40,10 +40,7 @@ class LoginPageState extends GetView<LoginController> {
           ),
           Form(
             child: Container(
-                decoration: BoxDecoration(
-
-                color: Colors.black,
-                ),
+                decoration: BoxDecoration(),
                 padding: EdgeInsets.only(top: 40.0, left: 20.0, right: 30.0),
                 child: Column(
                   children: <Widget>[
@@ -104,10 +101,10 @@ class LoginPageState extends GetView<LoginController> {
                           elevation: 7.0,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.purple,
-                              onPrimary: Colors.white,
-                              fixedSize: Size(250, 70),
-                              elevation: 5),
+                                primary: Colors.purple,
+                                onPrimary: Colors.white,
+                                fixedSize: Size(250, 70),
+                                elevation: 5),
                             onPressed: () {
                               controller.login();
                             },
@@ -125,50 +122,43 @@ class LoginPageState extends GetView<LoginController> {
                       ),
                     ),
                     SizedBox(height: 20.0),
+                    Container(child: SizedBox(height: 30)),
                     Container(
-          child:
-          SizedBox(height: 30)),
-          Container(
-          child:
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Não possui uma conta?',
-                style: TextStyle(
-                  fontFamily: 'Righteous',
-                  color: Colors.white
-                ),
-              ),
-              
-              SizedBox(width: 5.0),
-              Container(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                    onPrimary: Colors.white,
-                    fixedSize: Size(150, 28),
-                    elevation: 5),
-                  child: Text(
-                    'Cadastre-se',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Righteous',
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline),
-                  
-                  ),
-                onPressed: () {
-                  Get.to(() => SignUpView(), binding: SignUpBinding());
-                },
-                ),
-              )
-            ],
-          )
-        )
-        ],
-        )),
-        ),
-      ]));
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Não possui uma conta?',
+                          style: TextStyle(
+                              fontFamily: 'Righteous', color: Colors.black),
+                        ),
+                        SizedBox(width: 5.0),
+                        Container(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.purple,
+                                onPrimary: Colors.white,
+                                fixedSize: Size(150, 28),
+                                elevation: 5),
+                            child: Text(
+                              'Cadastre-se',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Righteous',
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline),
+                            ),
+                            onPressed: () {
+                              Get.to(() => SignUpView(),
+                                  binding: SignUpBinding());
+                            },
+                          ),
+                        )
+                      ],
+                    ))
+                  ],
+                )),
+          ),
+        ]));
   }
 }

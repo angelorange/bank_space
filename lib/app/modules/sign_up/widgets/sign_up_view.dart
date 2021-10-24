@@ -39,11 +39,7 @@ class SignUpView extends GetView<SignUpController> {
             ),
           ),
           Container(
-              decoration: BoxDecoration(
-
-                color: Colors.black,
-      
-                ),
+              decoration: BoxDecoration(),
               padding: EdgeInsets.only(top: 40.0, left: 20.0, right: 30.0),
               child: Column(
                 children: <Widget>[
@@ -53,9 +49,9 @@ class SignUpView extends GetView<SignUpController> {
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        filled: true,
-                        fillColor: Colors.white,
+                          color: Colors.black),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
@@ -75,9 +71,9 @@ class SignUpView extends GetView<SignUpController> {
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        filled: true,
-                        fillColor: Colors.white,
+                          color: Colors.black),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
@@ -98,9 +94,9 @@ class SignUpView extends GetView<SignUpController> {
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        filled: true,
-                        fillColor: Colors.white,
+                          color: Colors.black),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
@@ -121,9 +117,9 @@ class SignUpView extends GetView<SignUpController> {
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        filled: true,
-                        fillColor: Colors.white,
+                          color: Colors.black),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
@@ -143,9 +139,9 @@ class SignUpView extends GetView<SignUpController> {
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        filled: true,
-                        fillColor: Colors.white,
+                          color: Colors.black),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
@@ -165,9 +161,9 @@ class SignUpView extends GetView<SignUpController> {
                       labelStyle: TextStyle(
                           fontFamily: 'Righteous',
                           fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                        filled: true,
-                        fillColor: Colors.white,
+                          color: Colors.black),
+                      filled: true,
+                      fillColor: Colors.white,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.green),
                       ),
@@ -190,30 +186,26 @@ class SignUpView extends GetView<SignUpController> {
                         borderRadius: BorderRadius.circular(20.0),
                         elevation: 7.0,
                         child: ElevatedButton(
-
                           style: ElevatedButton.styleFrom(
                               primary: Colors.purple,
                               onPrimary: Colors.white,
                               fixedSize: Size(250, 70),
                               elevation: 5),
-                          
                           onPressed: () {
                             controller.signUp();
                           },
-                          
-                            child: Text(
-                              'Confirmar',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Righteous'),
-                            ),
+                          child: Text(
+                            'Confirmar',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Righteous'),
+                          ),
                         ),
                       )),
                   SizedBox(height: 20.0),
                   Container(
                     height: 40.0,
-                    color: Colors.black,
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.all(
@@ -231,7 +223,8 @@ class SignUpView extends GetView<SignUpController> {
                             'Voltar',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontFamily: 'Righteous', color:  Colors.white),
+                                fontFamily: 'Righteous',
+                                color: Colors.black),
                           ),
                         ),
                       ),
