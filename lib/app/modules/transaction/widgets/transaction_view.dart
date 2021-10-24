@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class CreateTransactionState extends GetView<TransactionController> {
-  final TransactionController _transactionController = Get.put(TransactionController());
-  
+  final TransactionController _transactionController =
+      Get.put(TransactionController());
+
   final user;
 
   CreateTransactionState(this.user);
-  
-  
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -45,10 +45,6 @@ class CreateTransactionState extends GetView<TransactionController> {
           ),
           Form(
             child: Container(
-                decoration: BoxDecoration(
-
-                color: Colors.black,
-                ),
                 padding: EdgeInsets.only(top: 40.0, left: 20.0, right: 30.0),
                 child: Column(
                   children: <Widget>[
@@ -89,7 +85,7 @@ class CreateTransactionState extends GetView<TransactionController> {
                       ),
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
-                                 FilteringTextInputFormatter.digitsOnly
+                        FilteringTextInputFormatter.digitsOnly
                       ],
                       controller: controller.valueController,
                       onSaved: (value) {
@@ -99,7 +95,6 @@ class CreateTransactionState extends GetView<TransactionController> {
                         return controller.validateValue(double.parse(value!));
                       },
                     ),
-                    
                     SizedBox(height: 10.0),
                     SizedBox(height: 20.0),
                     Container(
@@ -112,12 +107,15 @@ class CreateTransactionState extends GetView<TransactionController> {
                           elevation: 7.0,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.purple,
-                              onPrimary: Colors.white,
-                              fixedSize: Size(250, 70),
-                              elevation: 5),
+                                primary: Colors.purple,
+                                onPrimary: Colors.white,
+                                fixedSize: Size(250, 70),
+                                elevation: 5),
                             onPressed: () {
-                            controller.transact( controller.usernameController.text, double.parse(controller.valueController.text), user);
+                              controller.transact(
+                                  controller.usernameController.text,
+                                  double.parse(controller.valueController.text),
+                                  user);
                             },
                             child: Center(
                               child: Text(
@@ -133,13 +131,10 @@ class CreateTransactionState extends GetView<TransactionController> {
                       ),
                     ),
                     SizedBox(height: 20.0),
-                    Container(
-          child:
-          SizedBox(height: 30)),
-          
-        ],
-        )),
-        ),
-      ]));
+                    Container(child: SizedBox(height: 30)),
+                  ],
+                )),
+          ),
+        ]));
   }
 }

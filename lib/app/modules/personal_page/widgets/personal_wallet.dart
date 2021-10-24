@@ -8,11 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PersonalWallet extends StatelessWidget {
-
-
   final Wallet wallet;
   const PersonalWallet(this.wallet);
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,16 +22,14 @@ class PersonalWallet extends StatelessWidget {
 
 class personalWallet extends StatefulWidget {
   final Wallet wallet;
-  
+
   const personalWallet(this.wallet);
-  
+
   @override
   _personalWalletState createState() => _personalWalletState(this.wallet);
 }
 
 class _personalWalletState extends State<personalWallet> {
-
-
   late Wallet wallet;
   _personalWalletState(this.wallet);
 
@@ -48,10 +44,11 @@ class _personalWalletState extends State<personalWallet> {
 
   void addValue() {
     setState(() {
-       AuthAPI().getWallet(wallet.user.token, wallet.user).then((wallet_refreshed){
-              wallet = wallet_refreshed;
-        });
-       
+      AuthAPI()
+          .getWallet(wallet.user.token, wallet.user)
+          .then((wallet_refreshed) {
+        wallet = wallet_refreshed;
+      });
     });
   }
 
@@ -61,9 +58,7 @@ class _personalWalletState extends State<personalWallet> {
     super.dispose();
   }
 
-
   @override
-  
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -76,7 +71,6 @@ class _personalWalletState extends State<personalWallet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -112,19 +106,18 @@ class _personalWalletState extends State<personalWallet> {
               style: TextStyle(
                   fontSize: 21,
                   fontWeight: FontWeight.w800,
-                  fontFamily: 'avenir',color: Colors.white),
+                  fontFamily: 'Righteous',
+                  color: Colors.white),
             ),
-            
             SizedBox(
               height: 10,
             ),
             Container(
               padding: EdgeInsets.all(30),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Colors.black,
-                border: Border.all(color: Color(0xffadff2f))
-              ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.black,
+                  border: Border.all(color: Color(0xffadff2f))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -135,7 +128,10 @@ class _personalWalletState extends State<personalWallet> {
                       Text(
                         (wallet.amount * 2).toString(),
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white),
+                            fontSize: 22,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Righteous',
+                            color: Colors.white),
                       ),
                       SizedBox(
                         height: 5,
@@ -143,25 +139,37 @@ class _personalWalletState extends State<personalWallet> {
                       Text(
                         "Saldo em R\$",
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Righteous',
+                            color: Colors.white),
                       ),
-                      SizedBox(height: 20,),
-                                            Text(
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
                         wallet.amount.toString(),
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white),
+                            fontSize: 22,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Righteous',
+                            color: Colors.white),
                       ),
                       Text(
                         "Saldo em OC\$",
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
+                            fontSize: 16,
+                            fontFamily: 'Righteous',
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white),
                       ),
                     ],
                   ),
                   Container(
                     height: 60,
                     width: 60,
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xffadff2f)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Color(0xffadff2f)),
                     child: Icon(
                       Icons.add,
                       size: 30,
@@ -181,11 +189,13 @@ class _personalWalletState extends State<personalWallet> {
                   style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.w800,
-                      fontFamily: 'avenir', color: Colors.white),
+                      fontFamily: 'Righteous',
+                      color: Colors.white),
                 ),
                 Container(
                   height: 60,
-                  width: 60,)
+                  width: 60,
+                )
               ],
             ),
             SingleChildScrollView(
@@ -193,25 +203,24 @@ class _personalWalletState extends State<personalWallet> {
               child: Row(
                 children: [
                   Container(
-                    height: 70,
-                    width: 70,
-                    margin: EdgeInsets.only(right: 20),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffadff2f),
-                     
-              
-                    ),
-                    child: TextButton(
-                      
-                    onPressed: () { Get.to(() => CreateTransactionState(wallet.user), binding: TransactionBinding());},
-                    
-                    child: Icon(
-                      Icons.add,
-                      size: 40,
-                      color: Colors.black,
-                    ),
-                  )),
+                      height: 70,
+                      width: 70,
+                      margin: EdgeInsets.only(right: 20),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xffadff2f),
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          Get.to(() => CreateTransactionState(wallet.user),
+                              binding: TransactionBinding());
+                        },
+                        child: Icon(
+                          Icons.add,
+                          size: 40,
+                          color: Colors.black,
+                        ),
+                      )),
                   avatarWidget("avatar1", "Mike"),
                   avatarWidget("avatar2", "Joseph"),
                   avatarWidget("avatar3", "Ashley"),
@@ -221,142 +230,127 @@ class _personalWalletState extends State<personalWallet> {
             SizedBox(
               height: 20,
             ),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-                 Text(
-                   'Serviços',
-                   style: TextStyle(
-                       fontSize: 21,
-                       fontWeight: FontWeight.w800,
-                       fontFamily: 'avenir', color: Colors.white,)
-                 ),
-                 
-                 Container(
-                   height: 30,
-                   width: 30,
-                   child: Container(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Serviços',
+                    style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Righteous',
+                      color: Colors.white,
+                    )),
+                Container(
                     height: 30,
                     width: 30,
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xffadff2f)),
-                    child: TextButton(
-                      child: Icon(
-                      Icons.add,
-                      size: 15,
-                      color: Colors.black
-                      ),
-                    onPressed: 
-                      () => showDialog<String>(
-                        context: context,
-                        builder: 
-                          (BuildContext context) => AlertDialog(
-
-                            backgroundColor: Colors.black ,
-                            title: const Text('Serviços'),
-                            content: 
-                              GridView.count(
-                                crossAxisCount: 4,
-                                childAspectRatio: 0.7,
-                                children: [
-
-                                  // -------- SERVICES ------- //
-                                  Column(
-                                    children: [
-                                      Expanded(
-                                        child: InkWell(
-                                          onTap: () { Get.to(() => CreateTransactionState(wallet.user), binding: TransactionBinding()); },
-                                          child: Container(
-                                            margin: EdgeInsets.all(4),
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                                              color: Colors.black,
-                                              border: Border.all(color: Color(0xffadff2f))
-                                            ),
-                                            child: Center(
-                                              child: Icon(
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Color(0xffadff2f)),
+                      child: TextButton(
+                        child: Icon(Icons.add, size: 15, color: Colors.black),
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                              backgroundColor: Colors.black,
+                              title: const Text('Serviços'),
+                              content: GridView.count(
+                                  crossAxisCount: 4,
+                                  childAspectRatio: 0.7,
+                                  children: [
+                                    // -------- SERVICES ------- //
+                                    Column(
+                                      children: [
+                                        Expanded(
+                                          child: InkWell(
+                                            onTap: () {
+                                              Get.to(
+                                                  () => CreateTransactionState(
+                                                      wallet.user),
+                                                  binding:
+                                                      TransactionBinding());
+                                            },
+                                            child: Container(
+                                              margin: EdgeInsets.all(4),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  color: Colors.black,
+                                                  border: Border.all(
+                                                      color:
+                                                          Color(0xffadff2f))),
+                                              child: Center(
+                                                  child: Icon(
                                                 Icons.monetization_on_outlined,
                                                 size: 20,
                                                 color: Colors.white,
-                                              )
+                                              )),
                                             ),
                                           ),
                                         ),
-                                      ),
 
-                                      // Expanded(
-                                      //   child: InkWell(
-                                      //     onTap: () { Get.to(() => CreateTransactionState(), binding: TransactionBinding()); },
-                                      //     child: Container(
-                                      //       margin: EdgeInsets.all(4),
-                                      //       decoration: BoxDecoration(
-                                      //         borderRadius: BorderRadius.all(Radius.circular(20)),
-                                      //         color: Colors.black,
-                                      //         border: Border.all(color: Color(0xffadff2f))
-                                      //       ),
-                                      //       child: Center(
-                                      //         child: Icon(
-                                      //           Icons.monetization_on_outlined,
-                                      //           size: 20,
-                                      //           color: Colors.white,
-                                      //         )
-                                      //       ),
-                                      //     ),
-                                      //   ),
-                                      // ),
+                                        // Expanded(
+                                        //   child: InkWell(
+                                        //     onTap: () { Get.to(() => CreateTransactionState(), binding: TransactionBinding()); },
+                                        //     child: Container(
+                                        //       margin: EdgeInsets.all(4),
+                                        //       decoration: BoxDecoration(
+                                        //         borderRadius: BorderRadius.all(Radius.circular(20)),
+                                        //         color: Colors.black,
+                                        //         border: Border.all(color: Color(0xffadff2f))
+                                        //       ),
+                                        //       child: Center(
+                                        //         child: Icon(
+                                        //           Icons.monetization_on_outlined,
+                                        //           size: 20,
+                                        //           color: Colors.white,
+                                        //         )
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
 
-                                  
-
-
-
-
-
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        'Enviar OC\$',
-                                        style: TextStyle(
-                                          fontFamily: 'avenir',
-                                          fontSize: 14,
-                                          color: Colors.white,
+                                        SizedBox(
+                                          height: 5,
                                         ),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                
-
-
-                                  
-                                ]
-                            ),
-                                            
-                            actions: 
-                              <Widget>[
+                                        Text(
+                                          'Enviar OC\$',
+                                          style: TextStyle(
+                                            fontFamily: 'avenir',
+                                            fontSize: 14,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        )
+                                      ],
+                                    ),
+                                  ]),
+                              actions: <Widget>[
                                 TextButton(
-                                  onPressed: () => Navigator.pop(context, 'Cancel'),
-                                  child: const Text('Voltar',  style: TextStyle(
-                                          fontFamily: 'avenir',
-                                          fontSize: 14,
-                                          color: Colors.white,
-                                        ), ),
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Cancel'),
+                                  child: const Text(
+                                    'Voltar',
+                                    style: TextStyle(
+                                      fontFamily: 'avenir',
+                                      fontSize: 14,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                                
-
                               ]),
+                        ),
                       ),
-                                      ),
-                  )
-                 )
-               ],
-             ),
-
+                    ))
+              ],
+            ),
           ],
         ),
       ),
     );
   }
-
 
   // Was crashing when try to use Get.to
   //  Column serviceWidget(String img, String name) {
@@ -371,8 +365,6 @@ class _personalWalletState extends State<personalWallet> {
   //           size: 20,
   //           color: Colors.white,
   //         );
-        
-        
 
   //     }
 
@@ -384,12 +376,7 @@ class _personalWalletState extends State<personalWallet> {
   //           color: Colors.white,
   //         );
 
-        
-
-
   //     }
-
-      
 
   //    return Column(
   //      children: [
@@ -432,8 +419,8 @@ class _personalWalletState extends State<personalWallet> {
       width: 120,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Colors.black,
-                border: Border.all(color: Color(0xffadff2f))),
+          color: Colors.black,
+          border: Border.all(color: Color(0xffadff2f))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -448,7 +435,6 @@ class _personalWalletState extends State<personalWallet> {
                 fontFamily: 'avenir',
                 fontWeight: FontWeight.w700),
           ),
-          
         ],
       ),
     );

@@ -14,7 +14,8 @@ class LoginPageState extends GetView<LoginController> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/jex.jpg"), fit: BoxFit.fill),
+                  image: AssetImage("assets/images/jex.jpg"),
+                  fit: BoxFit.cover),
             ),
             child: Stack(
               children: <Widget>[
