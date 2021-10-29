@@ -195,23 +195,19 @@ class AuthAPI extends BaseApi {
 
          
           if (jsonia['message'] != null ) { createSignUpNotification(); }
-
           
           if (jsonia['username'] != null ) { createUsernameExistsNotification(); }
-
           
           if (jsonia['fullname'] != null ) { createFullnameErrorNotification(); }
-
           
           if (jsonia['cpf'] != null ) { createCPFExistsNotification(); }
-
           
           if (jsonia['birthday'] != null ) { createBirthdayErrorNotification(); }
-
         
           if (jsonia['email'] != null ) { createEmailExistsNotification(); }
 
-         
+          if (jsonia['password'] != null ) { createInvalidPasswordNotification();}
+     
 
         }
 

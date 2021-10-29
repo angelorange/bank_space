@@ -93,7 +93,7 @@ Future<void> createInvalidLoginNotification() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent
     (
-      id: 6,
+      id: 7,
       channelKey: 'basic_channel',
       title: 'Email ou senha incorreto',
       body: 'Verifique a senha ou tente recupera-la',
@@ -107,7 +107,7 @@ Future<void> createLoginNotification() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent
     (
-      id: 6,
+      id: 8,
       channelKey: 'basic_channel',
       title: 'Uuário logado com sucesso',
       body: 'Bem-Vindo ao bankinspace',
@@ -121,7 +121,7 @@ Future<void> createTransactionConfirmedS(double double, String username) async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent
     (
-      id: 6,
+      id: 9,
       channelKey: 'basic_channel',
       title: 'Você realizous uma transfêrencia',
       body: 'Você realizous uma transfêrencia de OC\$ $double para $username',
@@ -136,7 +136,7 @@ Future<void> createTransactionFailed() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent
     (
-      id: 6,
+      id: 10,
       channelKey: 'basic_channel',
       title: 'Sua transfêrencia falhou',
       body: 'Verifique os dados inseridos e tente novamente',
@@ -152,7 +152,7 @@ Future<void> createYouHaveNoMoney() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent
     (
-      id: 6,
+      id: 11,
       channelKey: 'basic_channel',
       title: 'Saldo Insuficiente',
       body: 'Lembre-se da taxa de OC\$4,00',
@@ -165,10 +165,24 @@ Future<void> createInvalidUser() async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent
     (
-      id: 6,
+      id: 12,
       channelKey: 'basic_channel',
       title: 'Este usuário nõo existe',
       body: 'Verifique os dados inseridos',
+      notificationLayout: NotificationLayout.Default
+      ),
+    );
+}
+
+
+Future<void> createInvalidPasswordNotification () async {
+  await AwesomeNotifications().createNotification(
+    content: NotificationContent
+    (
+      id: 13,
+      channelKey: 'basic_channel',
+      title: 'Senha Inválida',
+      body: 'Minimo de 6 digitos',
       notificationLayout: NotificationLayout.Default
       ),
     );
