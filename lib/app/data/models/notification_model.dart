@@ -186,4 +186,45 @@ Future<void> createInvalidPasswordNotification () async {
       notificationLayout: NotificationLayout.Default
       ),
     );
+
 }
+
+
+  Future<void> createInvalidCardNotification () async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent
+      (
+        id: 14,
+        channelKey: 'basic_channel',
+        title: 'Cartão Inválido',
+        body: 'Verifique os dados inseridos',
+        notificationLayout: NotificationLayout.Default
+        ),
+      );
+  }
+
+  Future<void> createCardFailedNotification () async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent
+      (
+        id: 15,
+        channelKey: 'basic_channel',
+        title: 'Transação falhou',
+        body: 'Verifique os dados inseridos',
+        notificationLayout: NotificationLayout.Default
+        ),
+      );
+  }
+
+  Future<void> createCardSuccessNotification () async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent
+      (
+        id: 16,
+        channelKey: 'basic_channel',
+        title: 'Cartão Adicionado',
+        body: 'Você adicionou um cartão',
+        notificationLayout: NotificationLayout.Default
+        ),
+      );
+  }
