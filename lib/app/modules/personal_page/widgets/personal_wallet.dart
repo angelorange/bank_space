@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bankinspace/app/data/models/wallet_model.dart';
 import 'package:bankinspace/app/data/providers/api_provider.dart';
+import 'package:bankinspace/app/modules/card/bindings/card_binding.dart';
+import 'package:bankinspace/app/modules/card/widgets/create_card_view.dart';
 import 'package:bankinspace/app/modules/transaction/bindings/transaction_binding.dart';
 import 'package:bankinspace/app/modules/transaction/widgets/transaction_view.dart';
 import 'package:flutter/material.dart';
@@ -291,27 +293,6 @@ class _personalWalletState extends State<personalWallet> {
                                           ),
                                         ),
 
-                                        // Expanded(
-                                        //   child: InkWell(
-                                        //     onTap: () { Get.to(() => CreateTransactionState(), binding: TransactionBinding()); },
-                                        //     child: Container(
-                                        //       margin: EdgeInsets.all(4),
-                                        //       decoration: BoxDecoration(
-                                        //         borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        //         color: Colors.black,
-                                        //         border: Border.all(color: Color(0xffadff2f))
-                                        //       ),
-                                        //       child: Center(
-                                        //         child: Icon(
-                                        //           Icons.monetization_on_outlined,
-                                        //           size: 20,
-                                        //           color: Colors.white,
-                                        //         )
-                                        //       ),
-                                        //     ),
-                                        //   ),
-                                        // ),
-
                                         SizedBox(
                                           height: 5,
                                         ),
@@ -323,9 +304,57 @@ class _personalWalletState extends State<personalWallet> {
                                             color: Colors.white,
                                           ),
                                           textAlign: TextAlign.center,
-                                        )
+                                        ),
+
                                       ],
                                     ),
+                                    Column(
+                                      children: [
+                                        Expanded(
+                                          child: InkWell(
+                                            onTap: () {
+                                              Get.to(
+                                                  () => CreateCardState(
+                                                      wallet.user),
+                                                  binding:
+                                                      CardBinding());
+                                            },
+                                            child: Container(
+                                              margin: EdgeInsets.all(4),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(20)),
+                                                  color: Colors.black,
+                                                  border: Border.all(
+                                                      color:
+                                                          Color(0xffadff2f))),
+                                              child: Center(
+                                                  child: Icon(
+                                                Icons.monetization_on_outlined,
+                                                size: 20,
+                                                color: Colors.white,
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          'Adicionar Cartão\$',
+                                          style: TextStyle(
+                                            fontFamily: 'avenir',
+                                            fontSize: 14,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+
+                                      ],
+                                    ),
+                                    
                                   ]),
                               actions: <Widget>[
                                 TextButton(

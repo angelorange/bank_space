@@ -11,10 +11,12 @@ class BaseApi{
   static String base = "https://protected-wave-74168.herokuapp.com"; //pra testar o cod, isso é um mock
   static var api = base;
   var signupPath = api + "/sign_up";
-  var authPath = api + "/sign_in"; //exemplo
-  var profilePath = api + "/api/v1/profile"; //exemplo
-  var walletPath = api + "/api/v1/wallets"; //exemplo
-  var transactPath = api + "/api/v1/transactions"; //exemplo
+  var authPath = api + "/sign_in"; 
+  var profilePath = api + "/api/v1/profile";
+  var walletPath = api + "/api/v1/wallets";
+  var transactPath = api + "/api/v1/transactions"; 
+  var criptoPath = api + "/api/v1/cripto_products"; 
+  var cardPath = api + "/api/v1/cards"; 
 
   Map<String, String> headers = {
     "Content-Type": "application/json; charset=UTF-8"
@@ -207,11 +209,40 @@ class AuthAPI extends BaseApi {
           if (jsonia['email'] != null ) { createEmailExistsNotification(); }
 
           if (jsonia['password'] != null ) { createInvalidPasswordNotification();}
+
      
 
         }
 
     });
+
+  }
+
+  void createCard(String cardNumber, String cardMonth, String cardYear, String cardRefer, String cardName, User user) async {
+
+    var json_result;
+
+    try {
+
+      var body = jsonEncode( { 'card':  {'card_number': cardNumber,  'card_month': cardMonth, 'card_year': cardYear, 'refer_name': cardRefer, 'card_name': cardName } } );
+
+      var head = super.headers;
+      head['Authorization'] = user.token;
+          http.Response response =
+              await http.post(Uri.parse(super.cardPath), headers: head, body: body);
+
+      String sJson = response.body;
+      json_result = json.decode(sJson) as Map<String, dynamic>;
+
+    } on FormatException catch (e) {
+
+      print(e);
+
+    }
+
+    if (json_result['message'] == "Cartão foi adicionado com sucesso.") { createCardSuccessNotification(); }
+    if (json_result['message'] == "Alguma falha ocorreu, verifique os dados e tente novamente.") { createCardFailedNotification(); }
+    if (json_result['message'] == "Cartão inválido.") { createInvalidCardNotification(); }
 
   }
 

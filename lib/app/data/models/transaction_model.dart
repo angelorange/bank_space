@@ -18,8 +18,8 @@ class Transaction {
 }
 
 
-// Creates user object from 
-//
+// Create transaction object from json
+
 transactionfromJson(String string, User user) { 
  
   Map<String, dynamic> transaction_json = jsonDecode(string);
